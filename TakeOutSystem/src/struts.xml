@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- 开发模式下使用,这样可以打印出更详细的错误信息 -->
+	<!-- 默认的视图主题 -->
+	<constant name="struts.ui.theme" value="simple" />
+	
+	<!--<constant name="struts.objectFactory" value="spring" /> -->
+	<!--解决乱码 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 指定允许上传的文件最大字节数。默认值是2097152(2M) -->
+	<constant name="struts.multipart.maxSize" value="10701096" />
+
+	<package name="cn.edu.djtu.action" extends="struts-default"
+		namespace="/">
+		<action name="login" class="cn.edu.djtu.action.LoginAction">
+			<result name="success" type="redirect">index.action</result>
+			<result name="error">WEB-INF/login.jsp</result>
+		</action>
+		<action name="orderctrl" class="cn.edu.djtu.action.OrderCtrlAction">
+			<result name="front" type="redirect">orders.action?mark=front</result>
+			<result name="back" type="redirect">orders.action?mark=back</result>
+			<result name="error">WEB-INF/index.jsp</result>
+		</action>
+		<action name="index" class="cn.edu.djtu.action.IndexAction">
+			<result name="success">WEB-INF/index.jsp</result>
+		</action>
+		<action name="takeout" class="cn.edu.djtu.action.TakeOutAction">
+			<result name="front">WEB-INF/takeout.jsp</result>
+			<result name="back">WEB-INF/takeoutlist.jsp</result>
+			<result name="error">WEB-INF/index.jsp</result>
+		</action>
+		<action name="logout" class="cn.edu.djtu.action.LogOutAction">
+			<result name="success" type="redirect">index.action</result>
+		</action>
+		<action name="register" class="cn.edu.djtu.action.RegisterAction">
+			<result name="success">WEB-INF/login.jsp</result>
+			<result name="error">WEB-INF/register.jsp</result>
+		</action>
+		<action name="userinfo" class="cn.edu.djtu.action.UserInfoAction">
+			<result name="success">WEB-INF/userinfo.jsp</result>
+			<result name="error">WEB-INF/userinfo.jsp</result>
+		</action>
+		<action name="car" class="cn.edu.djtu.action.CarAction">
+			<result name="success">WEB-INF/car.jsp</result>
+			<result name="error">WEB-INF/index.jsp</result>
+		</action>
+		<action name="carctrl" class="cn.edu.djtu.action.CarCtrlAction">
+			<result name="success" type="redirect">car.action</result>
+			<result name="error">WEB-INF/login.jsp</result>
+		</action>
+		<action name="userlist" class="cn.edu.djtu.action.UserListAction">
+			<result name="success">WEB-INF/userlist.jsp</result>
+			<result name="error">WEB-INF/index.jsp</result>
+		</action>
+		<action name="delete" class="cn.edu.djtu.action.DeleteAction">
+			<result name="car" type="redirect">car.action</result>
+			<result name="ordersback" type="redirect">orders.action?mark=back</result>
+			<result name="ordersfront" type="redirect">orders.action?mark=front</result>
+			<result name="takeoutlist" type="redirect">takeout.action?mark=back
+			</result>
+		</action>
+		<action name="orders" class="cn.edu.djtu.action.OrdersAction">
+			<result name="back">WEB-INF/ordersdisplay.jsp</result>
+			<result name="front">WEB-INF/orders.jsp</result>
+			<result name="error">WEB-INF/index.jsp</result>
+		</action>
+		<action name="submitorders" class="cn.edu.djtu.action.SubmitOrdersAction">
+			<result name="success" type="redirect">orders.action?mark=front</result>
+			<result name="error">WEB-INF/index.jsp</result>
+		</action>
+		<action name="addtakeout" class="cn.edu.djtu.action.AddTakeOutAction">
+			<result name="success" type="redirect">takeout.action?mark=back</result>
+			<result name="error">WEB-INF/takeoutedit.jsp</result>
+		</action>
+		<action name="jumpdirect" class="cn.edu.djtu.action.JumpDirectAction">
+			<result name="register">WEB-INF/register.jsp</result>
+			<result name="userinfo">WEB-INF/userinfo.jsp</result>
+			<result name="message">WEB-INF/message.jsp</result>
+			<result name="addtakeout">WEB-INF/takeoutedit.jsp</result>
+			<result name="backuserpass">WEB-INF/backuserpass.jsp</result>
+			<result name="error" type="redirect">index.action</result>
+		</action>
+		<action name="backuserdisplay" class="cn.edu.djtu.action.BackUserDisplayAction">
+			<result name="success">WEB-INF/backuserpass.jsp</result>
+			<result name="error" type="redirect">takeout.action</result>
+			<result name="index" type="redirect">index.action</result>
+		</action>
+		<action name="messagedisplay" class="cn.edu.djtu.action.MessageDisplayAction">
+			<result name="success">WEB-INF/message.jsp</result>
+		</action>
+		<action name="backuseredit" class="cn.edu.djtu.action.BackUserSubmitAction">
+			<result name="submit" type="redirect">backuserdisplay.action</result>
+			<result name="error">WEB-INF/backuserpass.jsp</result>
+			<result name="index" type="redirect">index.action</result>
+		</action>
+		<action name="messageadd" class="cn.edu.djtu.action.MessageeditAction">
+			<result name="success" type="redirect">messagedisplay.action</result>
+		</action>
+	</package>
+</struts>    
